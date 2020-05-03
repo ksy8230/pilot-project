@@ -17,6 +17,10 @@ module.exports = {
 				loader: 'awesome-typescript-loader',
 				exclude: path.join(__dirname, 'node_modules'),
 			},
+			{
+				test: /\.css$/,
+				loader: 'style-loader!css-loader',
+			},
 		],
 	},
 	plugins: [],
@@ -24,5 +28,10 @@ module.exports = {
 		path: path.join(__dirname, 'dist'),
 		filename: '[name].js',
 		publicPath: '/dist',
+	},
+	devServer: {
+		inline: true,
+		port: 8080,
+		historyApiFallback: true,
 	},
 };
