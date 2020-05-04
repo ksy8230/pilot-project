@@ -1,9 +1,10 @@
 {
-	"compilerOptions": {
-		"strict": true,
-		"lib": ["es5", "es6", "es2015", "es2016", "dom"],
-		"jsx": "react"
-	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["es5", "es6", "es2015", "es2016", "dom"],
+    "jsx": "react",
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

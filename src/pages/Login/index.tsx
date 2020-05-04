@@ -2,6 +2,9 @@ import * as React from 'react';
 import Logo from '../../Components/Logo';
 import { Form, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../data/rootActions';
+//import * as selectors from '@/data/rootSelectors';
 
 const LoginStyled = styled('div')`
   width: 100%;
@@ -15,7 +18,7 @@ const LoginStyled = styled('div')`
     transform: translate(-50%, -50%);
     .inner {
       max-width: 720px;
-      padding: 10rem;
+      padding: 10rem 0;
       text-align: center;
       margin: 0 auto;
       background: #fff;
@@ -50,24 +53,61 @@ const LoginStyled = styled('div')`
 `;
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [otp, setOtp] = React.useState('');
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = event => {
+    event.preventDefault();
+    dispatch(actions.user.login({ id: email, password }));
+  };
+
+  const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleOtpInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOtp(event.target.value);
+  };
+
   return (
     <LoginStyled>
       <div className="align-center">
         <div className="inner">
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <h1>
               <Logo />
             </h1>
             <Form.Group controlId="formBasicEmail">
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailInput}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordInput}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Control type="password" placeholder="OTP Code" />
+              <Form.Control
+                type="password"
+                placeholder="OTP Code"
+                value={otp}
+                onChange={handleOtpInput}
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">
