@@ -34,16 +34,16 @@ const NaviagationStyled = styled('div')`
 `;
 
 const LeftNaviagation = () => {
-	return (
-		<NaviagationStyled>
-			<Nav defaultActiveKey="/" className="flex-column">
-				<Logo />
-				<NaviItem to="/" text="대시보드" />
-				<NaviItem to="/test" text="분석" />
-				<NaviItem to="/login" text="로그인" />
-			</Nav>
-		</NaviagationStyled>
-	);
+  return (
+    <NaviagationStyled>
+      <Nav defaultActiveKey="/" className="flex-column">
+        <Logo />
+        <NaviItem to="/" text="대시보드" />
+        <NaviItem to="/test" text="분석" />
+        <NaviItem to="/login" text="로그인" />
+      </Nav>
+    </NaviagationStyled>
+  );
 };
 
 export default LeftNaviagation;

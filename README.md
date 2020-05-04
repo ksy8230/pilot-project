@@ -10,7 +10,8 @@
 - react
 - typescript
 - redux
-- material-ui
+- react-bootstrap
+- styled-component
 
 ### 2. 구현사항
 

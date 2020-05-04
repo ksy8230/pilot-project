@@ -8,14 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/css/reset.css';
 
 const App = () => {
-	return (
-		<BrowserRouter>
-			<Switch>
-				<PublicLayout path="/login" component={Login} />
-				<DefaultLayout path="/" component={Home} />
-			</Switch>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Switch>
+        <PublicLayout path="/login" component={Login} />
+        <DefaultLayout path="/" component={Home} />
+      </Switch>
+    </BrowserRouter>
+  );
 };
 
 export default App;
