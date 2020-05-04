@@ -1,38 +1,24 @@
 import * as ActionTypes from '../rootActionTypes';
 import * as actions from '../rootActions';
 import { Dispatch } from 'react';
-import { UserProps, LoginProps } from '../../types';
+import { UserProps, LoginProps } from '../../types/props';
+import { UserActions } from '../../types/actions';
+import { AppState } from '../rootReducer';
 //import apis from '@/services/apis';
 
-export interface LogInRequestAction {
-  type: typeof ActionTypes.LOGIN_REQUEST;
-  data: LoginProps;
-}
-export interface LogInSuccessAction {
-  type: typeof ActionTypes.LOGIN_SUCCESS;
-  data: UserProps;
-}
-
-export interface LogOutRequestAction {
-  type: typeof ActionTypes.LOGOUT_REQUEST;
-}
-
-export interface LogOutSuccessAction {
-  type: typeof ActionTypes.LOGOUT_SUCCESS;
-}
-
-export const loginRequest = (data: LoginProps): LogInRequestAction => ({
+export const loginRequest = (data: LoginProps): UserActions => ({
   type: ActionTypes.LOGIN_REQUEST,
   data,
 });
 
-export const loginSuccess = (data: UserProps): LogInSuccessAction => ({
+export const loginSuccess = (data: UserProps): UserActions => ({
   type: ActionTypes.LOGIN_SUCCESS,
   data,
 });
 
 export const login = (data: LoginProps) => async (
-  dispatch: Dispatch<LogInRequestAction | LogInSuccessAction>,
+  dispatch: Dispatch<UserActions>,
+  getState: () => AppState,
 ) => {
   dispatch(loginRequest(data));
   try {
@@ -48,17 +34,15 @@ export const login = (data: LoginProps) => async (
   }
 };
 
-export const logoutRequest = (): LogOutRequestAction => ({
+export const logoutRequest = (): UserActions => ({
   type: ActionTypes.LOGOUT_REQUEST,
 });
 
-export const logoutSuccess = (): LogOutSuccessAction => ({
+export const logoutSuccess = (): UserActions => ({
   type: ActionTypes.LOGOUT_SUCCESS,
 });
 
-export const logout = () => async (
-  dispatch: Dispatch<LogOutRequestAction | LogOutSuccessAction>,
-) => {
+export const logout = () => async (dispatch: Dispatch<UserActions>) => {
   dispatch(logoutRequest());
   try {
     dispatch(logoutSuccess());

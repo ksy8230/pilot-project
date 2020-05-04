@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useRef, MouseEvent } from 'react';
 import { Overlay, Popover } from 'react-bootstrap';
 import styled from 'styled-components';
-import { UserProps } from '../../types';
+import { UserProps } from '../../types/props';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../data/rootActions';
 

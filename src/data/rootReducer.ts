@@ -8,4 +8,6 @@ const createRootReducer = (history: any) =>
     user,
   });
 
+export type AppState = ReturnType<typeof createRootReducer>; // 리덕스에 존재하는 모든 state들의 type
+
 export { createRootReducer };

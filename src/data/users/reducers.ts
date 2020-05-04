@@ -1,5 +1,5 @@
 import * as ActionTypes from '../rootActionTypes';
-import * as actions from '../rootActions';
+import { UserActionsTypes } from '../../types/actions';
 
 export interface UserState {
   user: {
@@ -13,13 +13,7 @@ const initialState: UserState = {
   isLoading: false,
 };
 
-type UserReducerActions =
-  | actions.user.LogInRequestAction
-  | actions.user.LogInSuccessAction
-  | actions.user.LogOutRequestAction
-  | actions.user.LogOutSuccessAction;
-
-export default function user(state = initialState, action: UserReducerActions) {
+export default function user(state = initialState, action: UserActionsTypes) {
   switch (action.type) {
     case ActionTypes.LOGIN_REQUEST: {
       return { ...state, user: null, isLoading: true };

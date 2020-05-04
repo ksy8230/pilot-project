@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Row, Col, Container, Dropdown } from 'react-bootstrap';
 import Profile from '../Profile';
 import styled from 'styled-components';
-import { UserProps } from '../../types';
+import { UserProps } from '../../types/props';
 
 type TopNavigationProps = {
   user: UserProps;
