@@ -2,6 +2,11 @@ import * as React from 'react';
 import { Row, Col, Container, Dropdown } from 'react-bootstrap';
 import Profile from '../Profile';
 import styled from 'styled-components';
+import { UserProps } from '../../types';
+
+type TopNavigationProps = {
+  user: UserProps;
+};
 
 const TopNavigationStyled = styled('div')`
   margin: 1rem 0;
@@ -12,7 +17,7 @@ const TopNavigationStyled = styled('div')`
   }
 `;
 
-const TopNavigation = () => {
+const TopNavigation = ({ user }: TopNavigationProps) => {
   return (
     <TopNavigationStyled>
       <div className="dropMenu">
@@ -28,7 +33,7 @@ const TopNavigation = () => {
         </Dropdown>
       </div>
       <div className="gnb">
-        <Profile />
+        <Profile user={user} />
       </div>
     </TopNavigationStyled>
   );

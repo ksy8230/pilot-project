@@ -13,7 +13,11 @@ const initialState: UserState = {
   isLoading: false,
 };
 
-type UserReducerActions = actions.user.LogInRequestAction | actions.user.LogInSuccessAction;
+type UserReducerActions =
+  | actions.user.LogInRequestAction
+  | actions.user.LogInSuccessAction
+  | actions.user.LogOutRequestAction
+  | actions.user.LogOutSuccessAction;
 
 export default function user(state = initialState, action: UserReducerActions) {
   switch (action.type) {
@@ -22,6 +26,12 @@ export default function user(state = initialState, action: UserReducerActions) {
     }
     case ActionTypes.LOGIN_SUCCESS: {
       return { ...state, user: action.data, isLoading: true };
+    }
+    case ActionTypes.LOGOUT_REQUEST: {
+      return { ...state };
+    }
+    case ActionTypes.LOGOUT_SUCCESS: {
+      return { ...state, user: null };
     }
     default:
       return state;

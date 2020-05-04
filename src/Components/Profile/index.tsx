@@ -2,6 +2,13 @@ import * as React from 'react';
 import { useState, useRef, MouseEvent } from 'react';
 import { Overlay, Popover } from 'react-bootstrap';
 import styled from 'styled-components';
+import { UserProps } from '../../types';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../data/rootActions';
+
+type ProfileProps = {
+  user: UserProps;
+};
 
 const ProfileStyled = styled('div')`
   text-align: right;
@@ -25,31 +32,36 @@ const ProfileStyled = styled('div')`
   }
 `;
 
-const Profile = () => {
+const Profile = ({ user }: ProfileProps) => {
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState<null | HTMLElement>(null);
   const ref = useRef(null);
+  const dispatch = useDispatch();
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
+  const handleClick = (event: MouseEvent<HTMLDivElement>): void => {
     setShow(!show);
-    console.log(event.target);
     const target = event.target;
     setTarget(target as HTMLElement);
   };
+
+  const logOut = () => {
+    dispatch(actions.user.logout());
+  };
+
   return (
     <ProfileStyled>
       <div className="item">
-        <a href={'/u/'} className="nav-link">
+        <a href={`/user/${user && user.userId}`} className="nav-link">
           <img src="" alt="" />
         </a>
       </div>
       <div className="item">
         <p>관리자</p>
-        <strong>adminid</strong>
+        <strong>{user && user.nickname}</strong>
       </div>
       <div className="item">
         <div ref={ref}>
-          <button onClick={handleClick}>더 보기</button>
+          <div onClick={handleClick}>더 보기</div>
           <Overlay
             show={show}
             target={target}
@@ -60,7 +72,9 @@ const Profile = () => {
             <Popover id="popover-contained">
               <Popover.Content>
                 <a href="">마이페이지</a>
-                <a href="">로그아웃</a>
+                <a href="javascript:void(0)" onClick={logOut}>
+                  로그아웃
+                </a>
               </Popover.Content>
             </Popover>
           </Overlay>
