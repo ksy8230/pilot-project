@@ -25,3 +25,5 @@ export type UserActionsTypes =
   | LogOutSuccessAction;
 
 export type UserActions = UserActionsTypes;
+
+export type AppActions = UserActionsTypes;
