@@ -22,13 +22,16 @@ export const login = (data: LoginProps) => async (
 ) => {
   dispatch(loginRequest(data));
   try {
-    dispatch(
-      loginSuccess({
-        userId: 1,
-        nickname: 'sy',
-      }),
-    );
-    dispatch(actions.router.push('/') as any);
+    setTimeout(() => {
+      // api 요청 자리
+      dispatch(
+        loginSuccess({
+          userId: 1,
+          nickname: 'sy',
+        }),
+      );
+      dispatch(actions.router.push('/') as any);
+    }, 3000);
   } catch (error) {
     console.error(error);
   }

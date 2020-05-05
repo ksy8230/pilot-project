@@ -19,7 +19,7 @@ export default function user(state = initialState, action: UserActionsTypes) {
       return { ...state, user: null, isLoading: true };
     }
     case ActionTypes.LOGIN_SUCCESS: {
-      return { ...state, user: action.data, isLoading: true };
+      return { ...state, user: action.data, isLoading: false };
     }
     case ActionTypes.LOGOUT_REQUEST: {
       return { ...state };

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Logo from '../../Components/Logo';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../data/rootActions';
-//import * as selectors from '@/data/rootSelectors';
+import * as selectors from '../../data/rootSelectors';
 
 const LoginStyled = styled('div')`
   width: 100%;
@@ -57,6 +57,7 @@ const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [otp, setOtp] = React.useState('');
+  const { isLoading } = useSelector(selectors.user.getUserState);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();
@@ -103,7 +104,7 @@ const Login = () => {
 
             <Form.Group controlId="formBasicOTP">
               <Form.Control
-                type="otp"
+                type="text"
                 placeholder="OTP Code"
                 value={otp}
                 onChange={handleOtpInput}
@@ -111,7 +112,13 @@ const Login = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              {isLoading ? (
+                <>
+                  <Spinner animation="grow" />
+                </>
+              ) : (
+                <>Submit</>
+              )}
             </Button>
             <Form.Text className="text-muted">
               신규 등록은 관리자에게 문의해 주세요.
