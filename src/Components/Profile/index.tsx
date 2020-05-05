@@ -71,8 +71,8 @@ const Profile = ({ user }: ProfileProps) => {
           >
             <Popover id="popover-contained">
               <Popover.Content>
-                <a href="">마이페이지</a>
-                <a href="javascript:void(0)" onClick={logOut}>
+                <a href="#">마이페이지</a>
+                <a href="#" onClick={logOut}>
                   로그아웃
                 </a>
               </Popover.Content>
