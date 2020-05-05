@@ -27,7 +27,7 @@ const Panels = () => {
       <Container fluid>
         <Row>
           {fakeData.map(value => (
-            <Col>
+            <Col key={value.id}>
               <Panel data={value} />
             </Col>
           ))}

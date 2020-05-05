@@ -60,9 +60,9 @@ const Board = ({ boardTitle, head, data, onlyMalware }: BoardProps) => {
                 .filter(value => value.result == '악성')
                 .slice(0, 9)
                 .map(value => (
-                  <tr>
+                  <tr key={value.id}>
                     {tableKey.map((t, index) => (
-                      <td>{value[tableKey[index]]}</td>
+                      <td key={index}>{value[tableKey[index]]}</td>
                     ))}
                   </tr>
                 ))}
@@ -70,9 +70,9 @@ const Board = ({ boardTitle, head, data, onlyMalware }: BoardProps) => {
           ) : (
             <>
               {data.slice(0, 9).map(value => (
-                <tr>
+                <tr key={value.id}>
                   {tableKey.map((t, index) => (
-                    <td>{value[tableKey[index]]}</td>
+                    <td key={index}>{value[tableKey[index]]}</td>
                   ))}
                 </tr>
               ))}
