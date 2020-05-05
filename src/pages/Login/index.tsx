@@ -101,9 +101,9 @@ const Login = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="formBasicOTP">
               <Form.Control
-                type="password"
+                type="otp"
                 placeholder="OTP Code"
                 value={otp}
                 onChange={handleOtpInput}
