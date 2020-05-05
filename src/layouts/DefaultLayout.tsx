@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useLayoutEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LeftNaviagation from '../Components/LeftNavigation';
 import { Row, Col } from 'react-bootstrap';
@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import TopNavigation from '../Components/TopNavigation';
 
 import * as selectors from '../data/rootSelectors';
+import * as actions from '../data/rootActions';
 
 type DefaultLayoutProps = {
   path: string;
@@ -29,10 +30,11 @@ const DefaultLayoutStyled = styled('div')`
 `;
 
 const DefaultLayout = ({ component: Component, ...rest }: DefaultLayoutProps) => {
-  const user = useSelector(selectors.user.getUser);
+  const dispatch = useDispatch();
+  const user = useSelector(selectors.user.getUser); // {userId: 1, nickname: "sy"}
 
   useLayoutEffect(() => {
-    console.log(user);
+    dispatch(actions.user.loadMe());
   }, []);
 
   return (
@@ -42,7 +44,7 @@ const DefaultLayout = ({ component: Component, ...rest }: DefaultLayoutProps) =>
         <DefaultLayoutStyled>
           <Row className="default-layout">
             <Col sm={1} className="nav-area">
-              <LeftNaviagation />
+              <LeftNaviagation user={user} />
             </Col>
             <Col sm={11} className="content-area">
               <TopNavigation user={user} />

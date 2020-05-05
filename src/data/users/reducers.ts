@@ -27,6 +27,12 @@ export default function user(state = initialState, action: UserActionsTypes) {
     case ActionTypes.LOGOUT_SUCCESS: {
       return { ...state, user: null };
     }
+    case ActionTypes.LOAD_ME_REQUEST: {
+      return { ...state };
+    }
+    case ActionTypes.LOAD_ME_SUCCESS: {
+      return { ...state, user: action.data };
+    }
     default:
       return state;
   }

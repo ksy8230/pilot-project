@@ -33,14 +33,18 @@ const NaviagationStyled = styled('div')`
 		}
 `;
 
-const LeftNaviagation = () => {
+interface Props {
+  user: boolean;
+}
+
+const LeftNaviagation: React.FunctionComponent<Props> = ({ user }) => {
   return (
     <NaviagationStyled>
       <Nav defaultActiveKey="/" className="flex-column">
         <Logo />
-        <NaviItem to="/" text="대시보드" />
-        <NaviItem to="/test" text="분석" />
-        <NaviItem to="/login" text="로그인" />
+        <NaviItem to="/" text="대시보드" show={user} />
+        <NaviItem to="/test" text="분석" show={user} />
+        <NaviItem to="/login" text="로그인" show={!user} />
       </Nav>
     </NaviagationStyled>
   );

@@ -18,11 +18,22 @@ export interface LogOutSuccessAction {
   type: typeof ActionTypes.LOGOUT_SUCCESS;
 }
 
+export interface LoadMeRequestAction {
+  type: typeof ActionTypes.LOAD_ME_REQUEST;
+}
+
+export interface LoadMeSuccessAction {
+  type: typeof ActionTypes.LOAD_ME_SUCCESS;
+  data: UserProps;
+}
+
 export type UserActionsTypes =
   | LogInRequestAction
   | LogInSuccessAction
   | LogOutRequestAction
-  | LogOutSuccessAction;
+  | LogOutSuccessAction
+  | LoadMeRequestAction
+  | LoadMeSuccessAction;
 
 export type UserActions = UserActionsTypes;
 
