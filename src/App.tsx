@@ -7,12 +7,14 @@ import PublicLayout from './layouts/PublicLayout';
 import { ConnectedRouter } from 'connected-react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/css/reset.css';
+import ThreatInside from './pages/ThreatInside';
 
 const App = ({ history }: any) => {
   return (
     <ConnectedRouter history={history}>
       <Switch>
         <PublicLayout path="/login" component={Login} />
+        <DefaultLayout path="/ThreatInside" component={ThreatInside} />
         <DefaultLayout path="/" component={Home} />
       </Switch>
     </ConnectedRouter>
