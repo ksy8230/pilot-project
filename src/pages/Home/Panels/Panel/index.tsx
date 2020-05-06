@@ -17,9 +17,11 @@ type PanelProps = {
 
 const PanelStyled = styled('div')`
   .card {
+    margin: 2%;
     border-radius: 10px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     transition: all 0.5s;
+
     &:hover {
       background: #f8d7da;
     }

@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { UserProps } from '../../types/props';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../data/rootActions';
+import { faUser, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type ProfileProps = {
   user: UserProps;
@@ -14,9 +16,22 @@ const ProfileStyled = styled('div')`
   text-align: right;
   .item {
     display: inline-block;
-    padding-left: 1rem;
+    margin-left: 1rem;
     text-align: left;
     vertical-align: middle;
+    &.notice,
+    &.setting {
+      color: #9fb9bf;
+      cursor: pointer;
+      .icon {
+        transition: all 0.5s;
+      }
+    }
+    &.setting:hover {
+      .icon {
+        transform: rotate(90deg);
+      }
+    }
   }
   p {
     margin: 0;
@@ -59,9 +74,14 @@ const Profile = ({ user }: ProfileProps) => {
         <p>관리자</p>
         <strong>{user && user.nickname}</strong>
       </div>
-      <div className="item">
+      <div className="item notice">
+        <FontAwesomeIcon icon={faBell} size="2x" />
+      </div>
+      <div className="item setting">
         <div ref={ref}>
-          <div onClick={handleClick}>더 보기</div>
+          <div onClick={handleClick} className="icon">
+            <FontAwesomeIcon icon={faCog} size="2x" />
+          </div>
           <Overlay
             show={show}
             target={target}

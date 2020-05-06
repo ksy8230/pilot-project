@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import Panel from './Panel';
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 const fakeData = [
   { id: 1, title: '정보 공유 자동화', data1: 12, data2: 66, data3: 22, total: 1111 },
@@ -22,16 +23,27 @@ const PanelsStyled = styled('div')`
 `;
 
 const Panels = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 9,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+  };
   return (
     <PanelsStyled>
       <Container fluid>
-        <Row>
-          {fakeData.map(value => (
-            <Col key={value.id}>
-              <Panel data={value} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          <Slider {...settings}>
+            {fakeData.map(value => (
+              <div>
+                <Panel data={value} />
+              </div>
+            ))}
+          </Slider>
+        </>
       </Container>
     </PanelsStyled>
   );
